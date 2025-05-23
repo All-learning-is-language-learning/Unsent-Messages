@@ -29,10 +29,8 @@ func _continue_paragraph():
 	# 1) 读取下一句
 	var sentence: String = ink_story.call("Continue")
 
-
 	# 3) 展示这句话
 	_show_next_line(sentence)
-
 
 func _show_next_line(sentence: String):
 	# 2) 解析并发射这一句前的所有标签
@@ -85,10 +83,3 @@ func calc_display_time(len: int) -> float:
 	var norm = 1.0 - (log(len + 1) / log(L_max + 1))
 	var T = T_min + (T_max - T_min) * norm
 	return T
-
-func save_to_file(path: String) -> void:
-	ink_story.SaveStateFile(path)
-
-func load_from_file(path: String) -> void:
-	ink_story.LoadStateFile(path)
-	_show_next_line(ink_story.GetCurrentText())
