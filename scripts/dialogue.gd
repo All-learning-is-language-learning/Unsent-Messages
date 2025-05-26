@@ -38,8 +38,7 @@ func _show_next_line(sentence: String):
 	var tags = ink_story.call("GetCurrentTags")
 	for t in tags:
 		var parts = t.split(":")
-		if parts.size() == 2:
-			emit_signal("tag_parsed", parts[0], parts[1])
+		emit_signal("tag_parsed", parts)
 	# 更新文本
 	text_container.text = sentence
 	# 开始打字动画

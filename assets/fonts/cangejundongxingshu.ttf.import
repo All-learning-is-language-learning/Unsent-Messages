@@ -2,13 +2,13 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://bw3ulsykbt0km"
-path="res://.godot/imported/苹方黑体-中黑-繁.ttf-07814e7c64d2ce2b913308d7a03fa32a.fontdata"
+uid="uid://bkv24wq8ag641"
+path="res://.godot/imported/cangejundongxingshu.ttf-07aea119fb6f47ab32b5f0a34edd366d.fontdata"
 
 [deps]
 
-source_file="res://fonts/苹方黑体-中黑-繁.ttf"
-dest_files=["res://.godot/imported/苹方黑体-中黑-繁.ttf-07814e7c64d2ce2b913308d7a03fa32a.fontdata"]
+source_file="res://assets/fonts/cangejundongxingshu.ttf"
+dest_files=["res://.godot/imported/cangejundongxingshu.ttf-07aea119fb6f47ab32b5f0a34edd366d.fontdata"]
 
 [params]
 

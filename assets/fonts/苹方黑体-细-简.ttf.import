@@ -2,13 +2,13 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://coo4waefhlgqx"
-path="res://.godot/imported/仓耳丝摇行楷.ttf-650f8ff74a17fa55a31a14f1edd80495.fontdata"
+uid="uid://dom3yti2vd7sb"
+path="res://.godot/imported/苹方黑体-细-简.ttf-001970f1d3f651c06e33a7d3d45052a6.fontdata"
 
 [deps]
 
-source_file="res://fonts/仓耳丝摇行楷.ttf"
-dest_files=["res://.godot/imported/仓耳丝摇行楷.ttf-650f8ff74a17fa55a31a14f1edd80495.fontdata"]
+source_file="res://assets/fonts/苹方黑体-细-简.ttf"
+dest_files=["res://.godot/imported/苹方黑体-细-简.ttf-001970f1d3f651c06e33a7d3d45052a6.fontdata"]
 
 [params]
 

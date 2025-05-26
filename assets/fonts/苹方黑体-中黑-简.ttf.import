@@ -2,13 +2,13 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://33lkkt03seek"
-path="res://.godot/imported/苹方黑体-准-简.ttf-69c1dc3aba2e7890382b2d247bddc463.fontdata"
+uid="uid://dt1xclfg2v08f"
+path="res://.godot/imported/苹方黑体-中黑-简.ttf-b76a8f54f960b07f9f28b267ad2d1ac4.fontdata"
 
 [deps]
 
-source_file="res://fonts/苹方黑体-准-简.ttf"
-dest_files=["res://.godot/imported/苹方黑体-准-简.ttf-69c1dc3aba2e7890382b2d247bddc463.fontdata"]
+source_file="res://assets/fonts/苹方黑体-中黑-简.ttf"
+dest_files=["res://.godot/imported/苹方黑体-中黑-简.ttf-b76a8f54f960b07f9f28b267ad2d1ac4.fontdata"]
 
 [params]
 

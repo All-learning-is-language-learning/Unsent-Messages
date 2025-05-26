@@ -43,6 +43,8 @@ var bg_current_name : String = "dormitory";
 @onready var dialogue = $UserInterface/Dialogue
 @onready var characters_container = $Characters
 @onready var ink_story = dialogue.ink_story
+@onready var camera = $Camera2D
+@onready var memory_player = $MemoryPlayer
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -51,23 +53,46 @@ func _ready() -> void:
 	emit_signal("ready")
 
 
-func _on_dialogue_tag_parsed(key: String, value: String) -> void:
-	match key:
+func _on_dialogue_tag_parsed(tag: Array) -> void:
+	match tag[0]:
 		"background":
-			_change_background_to(value)
+			_change_background_to(tag[1])
 		"character":
 			# 支持两种用法：
 			# 1) # character:knight  —— 添加/显示 knight
 			# 2) # character:!knight —— 隐藏/移除 knight
 			# 3) # character:!all    —— 清除所有角色
-			if value.begins_with("!"):
-				var name = value.substr(1)
+			if tag[1].begins_with("!"):
+				var name = tag[1].substr(1)
 				if name == "all":
 					_clear_all_characters()
 				else:
 					_hide_character(name)
 			else:
-				_show_character(value)
+				_show_character(tag[1])
+		"shake":
+			camera.start_shake(2, 10)
+		"memory":
+			_on_memory_tag(tag[1])
+
+# 当收到 memory 标签时调用
+func _on_memory_tag(value: String) -> void:
+	# value 格式: "dormitory,office,library"
+	var keys = value.split(",", false)
+	
+	# 构造给 MemoryPlayer 的数组：第一个元素"memory"，后面是 Texture2D
+	var mem_array: Array = ["memory"]
+	for key in keys:
+		if BG_TEXTURES.has(key):
+			mem_array.append(BG_TEXTURES.get(key))
+		else:
+			push_warning("Unknown memory key: %s" % key)
+	
+	# 播放闪回序列，并等待它全部播完
+	await memory_player.play_memory_sequence(mem_array)
+	
+	# 闪回结束后，继续对话流程（如果需要）
+	#dialogue._continue_paragraph()
 
 var bg_fade_time = 1.0
 var char_fade_time = 1.0
@@ -138,6 +163,7 @@ func _show_character(name: String) -> void:
 	# 添加到 HBoxContainer 中
 	characters_container.add_child(node)
 	character_nodes[name] = node
+	node.mouse_filter = Control.MOUSE_FILTER_PASS
 
 	# 淡入：alpha 0 → 1 over char_fade_time
 	node.create_tween()\

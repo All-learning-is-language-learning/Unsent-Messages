@@ -1,13 +1,17 @@
-[gd_scene load_steps=9 format=3 uid="uid://bkw4qwxiqfh86"]
+[gd_scene load_steps=13 format=3 uid="uid://bkw4qwxiqfh86"]
 
 [ext_resource type="Script" uid="uid://67ncl11l0h4p" path="res://scripts/game.gd" id="1_lnu2h"]
-[ext_resource type="Texture2D" uid="uid://dxquktk7u7hej" path="res://assets/pictures/bg2.png" id="1_uwrxv"]
+[ext_resource type="Texture2D" uid="uid://dxquktk7u7hej" path="res://assets/pictures/backgrounds/bg2.png" id="1_uwrxv"]
+[ext_resource type="Script" uid="uid://bty3rvlqafooe" path="res://scenes/camera_2d.gd" id="2_kvpfn"]
 [ext_resource type="PackedScene" uid="uid://cadnsfe0xy05u" path="res://scenes/dialogue.tscn" id="2_yqjtg"]
 [ext_resource type="Script" uid="uid://c238j0k4n78kl" path="res://scripts/user_interface.gd" id="3_gee14"]
+[ext_resource type="PackedScene" uid="uid://bmrox1bp4rgfh" path="res://scenes/message_system.tscn" id="3_vtaks"]
+[ext_resource type="PackedScene" uid="uid://cese24e664rhm" path="res://scenes/memory_player.tscn" id="5_dinhu"]
 [ext_resource type="Resource" uid="uid://cvnfbsxvu2ym0" path="res://assets/inks/完整剧情分支.ink" id="5_gee14"]
 [ext_resource type="Texture2D" uid="uid://bodcruv6rqx57" path="res://assets/pictures/ui/save.png" id="5_iywne"]
 [ext_resource type="Theme" uid="uid://cq6g3leg2c6va" path="res://themes/dialogue.tres" id="5_u5sy4"]
 [ext_resource type="Texture2D" uid="uid://cdd60vm64m3nw" path="res://assets/pictures/ui/import.png" id="6_p57ef"]
+[ext_resource type="Texture2D" uid="uid://bwhikqmdpcq1t" path="res://assets/pictures/ui/message.png" id="9_0tnpc"]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_lnu2h")
@@ -16,6 +20,7 @@ metadata/_edit_vertical_guides_ = [960.0]
 
 [node name="Camera2D" type="Camera2D" parent="."]
 offset = Vector2(960, 540)
+script = ExtResource("2_kvpfn")
 
 [node name="BgNext" type="TextureRect" parent="."]
 anchors_preset = 8
@@ -40,14 +45,21 @@ grow_vertical = 2
 texture = ExtResource("1_uwrxv")
 expand_mode = 1
 
+[node name="MessageSystem" parent="." instance=ExtResource("3_vtaks")]
+visible = false
+
 [node name="Characters" type="HBoxContainer" parent="."]
 offset_top = 180.0
 offset_right = 1920.0
 offset_bottom = 1080.0
 size_flags_horizontal = 3
 size_flags_vertical = 12
+mouse_filter = 2
 alignment = 1
 metadata/separation = 20
+
+[node name="MemoryPlayer" parent="." instance=ExtResource("5_dinhu")]
+visible = false
 
 [node name="UserInterface" type="CanvasLayer" parent="."]
 script = ExtResource("3_gee14")
@@ -75,7 +87,14 @@ tooltip_text = "加载"
 theme = ExtResource("5_u5sy4")
 icon = ExtResource("6_p57ef")
 
+[node name="Message" type="Button" parent="UserInterface/Buttons"]
+layout_mode = 2
+tooltip_text = "留言板"
+theme = ExtResource("5_u5sy4")
+icon = ExtResource("9_0tnpc")
+
 [connection signal="ready" from="." to="UserInterface/Dialogue" method="_start" flags=6]
 [connection signal="tag_parsed" from="UserInterface/Dialogue" to="." method="_on_dialogue_tag_parsed"]
 [connection signal="pressed" from="UserInterface/Buttons/Save" to="UserInterface" method="_on_SaveButton_pressed"]
 [connection signal="pressed" from="UserInterface/Buttons/Load" to="UserInterface" method="_on_LoadButton_pressed"]
+[connection signal="pressed" from="UserInterface/Buttons/Message" to="UserInterface" method="_on_MessageButton_pressed"]

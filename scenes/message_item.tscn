@@ -1,9 +1,9 @@
 [gd_scene load_steps=6 format=3 uid="uid://bxgnr5owcg1da"]
 
-[ext_resource type="FontFile" uid="uid://bkv24wq8ag641" path="res://fonts/cangejundongxingshu.ttf" id="1_4n7pn"]
-[ext_resource type="Script" uid="uid://boykdtgbexf2n" path="res://scripts/message_item.gd" id="1_kkv0p"]
-[ext_resource type="FontFile" uid="uid://b5ct6hn85q7wr" path="res://fonts/苹方黑体-中粗-简.ttf" id="2_kkv0p"]
-[ext_resource type="FontFile" uid="uid://coo4waefhlgqx" path="res://fonts/仓耳丝摇行楷.ttf" id="3_obwn0"]
+[ext_resource type="FontFile" uid="uid://bkv24wq8ag641" path="res://assets/fonts/cangejundongxingshu.ttf" id="1_4n7pn"]
+[ext_resource type="Script" path="res://scripts/message_item.gd" id="1_kkv0p"]
+[ext_resource type="FontFile" uid="uid://b5ct6hn85q7wr" path="res://assets/fonts/苹方黑体-中粗-简.ttf" id="2_kkv0p"]
+[ext_resource type="FontFile" uid="uid://coo4waefhlgqx" path="res://assets/fonts/仓耳丝摇行楷.ttf" id="3_obwn0"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_puv0h"]
 content_margin_left = 3.0

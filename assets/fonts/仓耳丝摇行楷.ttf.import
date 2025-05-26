@@ -2,13 +2,13 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://bkv24wq8ag641"
-path="res://.godot/imported/cangejundongxingshu.ttf-9a1031a2f43adcbcfa6e3513c99df0bb.fontdata"
+uid="uid://coo4waefhlgqx"
+path="res://.godot/imported/仓耳丝摇行楷.ttf-5b39864bd079e03c8049aa74f065927e.fontdata"
 
 [deps]
 
-source_file="res://fonts/cangejundongxingshu.ttf"
-dest_files=["res://.godot/imported/cangejundongxingshu.ttf-9a1031a2f43adcbcfa6e3513c99df0bb.fontdata"]
+source_file="res://assets/fonts/仓耳丝摇行楷.ttf"
+dest_files=["res://.godot/imported/仓耳丝摇行楷.ttf-5b39864bd079e03c8049aa74f065927e.fontdata"]
 
 [params]
 

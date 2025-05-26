@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://cese24e664rhm"]
+
+[ext_resource type="Script" uid="uid://bd4r4kw3g6cqq" path="res://memory_player.gd" id="1_tkx4c"]
+[ext_resource type="Shader" uid="uid://bj65y1cqyao1w" path="res://shaders/memory.gdshader" id="2_yu38l"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_i8o8j"]
+shader = ExtResource("2_yu38l")
+shader_parameter/desaturate_factor = 0.8
+
+[node name="MemoryPlayer" type="Control"]
+custom_minimum_size = Vector2(1920, 1080)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_tkx4c")
+
+[node name="MemoryRect" type="TextureRect" parent="."]
+modulate = Color(1, 1, 1, 0)
+material = SubResource("ShaderMaterial_i8o8j")
+layout_mode = 0
+offset_right = 1913.0
+offset_bottom = 1073.0
+mouse_filter = 2
+stretch_mode = 4

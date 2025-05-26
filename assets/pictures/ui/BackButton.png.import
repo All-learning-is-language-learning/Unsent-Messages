@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bb2c5po15jtkd"
-path="res://.godot/imported/头像.jpg-f55d7b28b0e92b79b02ae1342f4ea77a.ctex"
+uid="uid://d28mkq5xfltqb"
+path="res://.godot/imported/BackButton.png-544ad80190ea3913d79a38ab2ceeb662.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/头像.jpg"
-dest_files=["res://.godot/imported/头像.jpg-f55d7b28b0e92b79b02ae1342f4ea77a.ctex"]
+source_file="res://assets/pictures/ui/BackButton.png"
+dest_files=["res://.godot/imported/BackButton.png-544ad80190ea3913d79a38ab2ceeb662.ctex"]
 
 [params]
 

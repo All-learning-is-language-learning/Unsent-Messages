@@ -22,6 +22,7 @@ offset_right = -3.0
 offset_bottom = 8.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 theme = SubResource("Theme_fyky8")
 script = ExtResource("1_fyky8")
 ink_story = SubResource("Resource_led2e")
