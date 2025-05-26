@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://hctxsrtwomgg"
-path="res://.godot/imported/雨中天台（黑白）.png-b7320c1658301e5e0b6dd7d817a3212e.ctex"
+path="res://.godot/imported/balcony_black_and_white.png-8ae69dc8f264fa85eab9e0b6b2afec9b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/pictures/backgrounds/雨中天台（黑白）.png"
-dest_files=["res://.godot/imported/雨中天台（黑白）.png-b7320c1658301e5e0b6dd7d817a3212e.ctex"]
+source_file="res://assets/pictures/backgrounds/balcony_black_and_white.png"
+dest_files=["res://.godot/imported/balcony_black_and_white.png-8ae69dc8f264fa85eab9e0b6b2afec9b.ctex"]
 
 [params]
 

@@ -26,11 +26,12 @@ func _continue_paragraph():
 		child.queue_free()
 	next_button.visible = false
 
-	# 1) 读取下一句
-	var sentence: String = ink_story.call("Continue")
+	if ink_story.GetCanContinue():
+		# 1) 读取下一句
+		var sentence: String = ink_story.call("Continue")
 
-	# 3) 展示这句话
-	_show_next_line(sentence)
+		# 3) 展示这句话
+		_show_next_line(sentence)
 
 func _show_next_line(sentence: String):
 	# 2) 解析并发射这一句前的所有标签
@@ -58,6 +59,10 @@ func _show_choices():
 	for choice in ink_story.call("GetCurrentChoices"):
 		var btn = Button.new()
 		btn.text = choice.call("GetText")
+		
+		# 自动换行模式
+		btn.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+		
 		# 点击时，选择该分支并重新开始下一段逐行流程
 		btn.pressed.connect(func():
 			ink_story.call("ChooseChoiceIndex", choice.call("GetIndex"))
