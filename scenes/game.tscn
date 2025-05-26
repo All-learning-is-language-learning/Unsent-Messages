@@ -1,0 +1,66 @@
+[gd_scene load_steps=9 format=3 uid="uid://bkw4qwxiqfh86"]
+
+[ext_resource type="Script" uid="uid://67ncl11l0h4p" path="res://scripts/game.gd" id="1_lnu2h"]
+[ext_resource type="Texture2D" uid="uid://dxquktk7u7hej" path="res://assets/pictures/bg2.png" id="1_uwrxv"]
+[ext_resource type="PackedScene" uid="uid://cadnsfe0xy05u" path="res://scenes/dialogue.tscn" id="2_yqjtg"]
+[ext_resource type="Script" uid="uid://c238j0k4n78kl" path="res://scripts/user_interface.gd" id="3_gee14"]
+[ext_resource type="Resource" uid="uid://cvnfbsxvu2ym0" path="res://assets/inks/完整剧情分支.ink" id="5_gee14"]
+[ext_resource type="Texture2D" uid="uid://bodcruv6rqx57" path="res://assets/pictures/ui/save.png" id="5_iywne"]
+[ext_resource type="Theme" uid="uid://cq6g3leg2c6va" path="res://themes/dialogue.tres" id="5_u5sy4"]
+[ext_resource type="Texture2D" uid="uid://cdd60vm64m3nw" path="res://assets/pictures/ui/import.png" id="6_p57ef"]
+
+[node name="Game" type="Node2D"]
+script = ExtResource("1_lnu2h")
+metadata/_edit_horizontal_guides_ = [540.0]
+metadata/_edit_vertical_guides_ = [960.0]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+offset = Vector2(960, 540)
+
+[node name="BgNext" type="Sprite2D" parent="."]
+position = Vector2(960, 540)
+texture = ExtResource("1_uwrxv")
+
+[node name="BgCurrent" type="Sprite2D" parent="."]
+position = Vector2(960, 540)
+texture = ExtResource("1_uwrxv")
+
+[node name="Characters" type="HBoxContainer" parent="."]
+offset_top = 180.0
+offset_right = 1920.0
+offset_bottom = 1080.0
+size_flags_horizontal = 3
+size_flags_vertical = 12
+alignment = 1
+metadata/separation = 20
+
+[node name="UserInterface" type="CanvasLayer" parent="."]
+script = ExtResource("3_gee14")
+
+[node name="Dialogue" parent="UserInterface" instance=ExtResource("2_yqjtg")]
+offset_left = 0.0
+offset_right = 0.0
+ink_story = ExtResource("5_gee14")
+
+[node name="Buttons" type="HBoxContainer" parent="UserInterface"]
+offset_left = 1433.0
+offset_top = 993.0
+offset_right = 1917.0
+offset_bottom = 1081.0
+
+[node name="Save" type="Button" parent="UserInterface/Buttons"]
+layout_mode = 2
+tooltip_text = "保存"
+theme = ExtResource("5_u5sy4")
+icon = ExtResource("5_iywne")
+
+[node name="Load" type="Button" parent="UserInterface/Buttons"]
+layout_mode = 2
+tooltip_text = "加载"
+theme = ExtResource("5_u5sy4")
+icon = ExtResource("6_p57ef")
+
+[connection signal="ready" from="." to="UserInterface/Dialogue" method="_start" flags=6]
+[connection signal="tag_parsed" from="UserInterface/Dialogue" to="." method="_on_dialogue_tag_parsed"]
+[connection signal="pressed" from="UserInterface/Buttons/Save" to="UserInterface" method="_on_SaveButton_pressed"]
+[connection signal="pressed" from="UserInterface/Buttons/Load" to="UserInterface" method="_on_LoadButton_pressed"]

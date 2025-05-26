@@ -1,0 +1,16 @@
+[remap]
+
+importer="ink"
+type="Resource"
+uid="uid://cvnfbsxvu2ym0"
+path="res://.godot/imported/完整剧情分支.ink-450b6c4e2ea5dcb4a4da24d2f8775680.res"
+
+[deps]
+
+source_file="res://assets/inks/完整剧情分支.ink"
+dest_files=["res://.godot/imported/完整剧情分支.ink-450b6c4e2ea5dcb4a4da24d2f8775680.res"]
+
+[params]
+
+is_main_file=true
+compress=true

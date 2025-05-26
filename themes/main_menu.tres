@@ -1,0 +1,51 @@
+[gd_resource type="Theme" load_steps=6 format=3 uid="uid://baaboqwg2hi6r"]
+
+[ext_resource type="FontFile" uid="uid://c6xy65hv8yasb" path="res://assets/fonts/SarasaUiSC-BoldItalic.ttf" id="1_djdlk"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_djdlk"]
+content_margin_left = 10.0
+content_margin_top = 5.0
+content_margin_right = 10.0
+content_margin_bottom = 5.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bqqt6"]
+content_margin_left = 10.0
+content_margin_top = 5.0
+content_margin_right = 10.0
+content_margin_bottom = 5.0
+bg_color = Color(0.384965, 0.616793, 0.864722, 0.392157)
+border_width_bottom = 5
+border_color = Color(0.384314, 0.615686, 0.866667, 0.392157)
+border_blend = true
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bqqt6"]
+content_margin_left = 10.0
+content_margin_top = 5.0
+content_margin_right = 10.0
+content_margin_bottom = 5.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wu84c"]
+content_margin_left = 10.0
+content_margin_top = 5.0
+content_margin_right = 10.0
+content_margin_bottom = 5.0
+bg_color = Color(0.384314, 0.615686, 0.866667, 1)
+border_color = Color(0.384314, 0.615686, 0.866667, 1)
+border_blend = true
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[resource]
+default_font = ExtResource("1_djdlk")
+default_font_size = 114
+Button/styles/focus = SubResource("StyleBoxEmpty_djdlk")
+Button/styles/hover = SubResource("StyleBoxFlat_bqqt6")
+Button/styles/normal = SubResource("StyleBoxEmpty_bqqt6")
+Button/styles/pressed = SubResource("StyleBoxFlat_wu84c")
+Label/font_sizes/font_size = 144

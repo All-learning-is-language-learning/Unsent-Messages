@@ -1,0 +1,74 @@
+[gd_scene load_steps=6 format=3 uid="uid://cadnsfe0xy05u"]
+
+[ext_resource type="Script" uid="uid://v6sce3qtbwa8" path="res://scripts/dialogue.gd" id="1_fyky8"]
+[ext_resource type="Theme" uid="uid://cq6g3leg2c6va" path="res://themes/dialogue.tres" id="1_led2e"]
+[ext_resource type="Resource" uid="uid://oga0mylptkvk" path="res://assets/inks/TheIntercept.ink" id="2_fyky8"]
+[ext_resource type="Script" uid="uid://difyuabuvynxy" path="res://scripts/text.gd" id="3_bfpow"]
+
+[sub_resource type="Theme" id="Theme_fyky8"]
+
+[node name="Dialogue" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -3.0
+offset_top = 8.0
+offset_right = -3.0
+offset_bottom = 8.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_fyky8")
+script = ExtResource("1_fyky8")
+ink_story = ExtResource("2_fyky8")
+
+[node name="Text" type="RichTextLabel" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -401.0
+offset_top = -285.0
+offset_right = 399.0
+offset_bottom = -35.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("1_led2e")
+script = ExtResource("3_bfpow")
+
+[node name="Choices" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.717
+anchor_top = 0.652
+anchor_right = 0.717
+anchor_bottom = 0.652
+offset_left = -188.64
+offset_top = -173.16
+offset_right = -0.640015
+offset_bottom = 64.84
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_led2e")
+alignment = 2
+
+[node name="NextButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.705
+anchor_top = 0.971
+anchor_right = 0.705
+anchor_bottom = 0.971
+offset_left = -150.6
+offset_top = -72.6801
+offset_right = 2.3999
+offset_bottom = -18.6801
+grow_horizontal = 0
+grow_vertical = 0
+theme = ExtResource("1_led2e")
+text = "Next ->"
+
+[connection signal="typing_finished" from="Text" to="." method="_on_text_typing_finished"]
+[connection signal="pressed" from="NextButton" to="." method="_on_NextButton_pressed"]

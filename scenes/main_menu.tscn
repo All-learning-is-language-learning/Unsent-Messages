@@ -1,0 +1,67 @@
+[gd_scene load_steps=5 format=3 uid="uid://cahoj8dy5yml5"]
+
+[ext_resource type="Texture2D" uid="uid://c00i5x28tr8q2" path="res://assets/pictures/bg.png" id="1_l6cm7"]
+[ext_resource type="Theme" uid="uid://baaboqwg2hi6r" path="res://themes/main_menu.tres" id="3_bqqt6"]
+[ext_resource type="Script" uid="uid://bjhdt83x2o48" path="res://scripts/start_button.gd" id="3_wu84c"]
+[ext_resource type="Script" uid="uid://c7sh1jd263ybp" path="res://scripts/exit_button.gd" id="4_wu84c"]
+
+[node name="MainMenu" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+offset = Vector2(960, 540)
+
+[node name="Bg" type="Sprite2D" parent="."]
+position = Vector2(960, 540)
+texture = ExtResource("1_l6cm7")
+
+[node name="UserInterface" type="CanvasLayer" parent="."]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UserInterface"]
+anchors_preset = -1
+anchor_left = 0.241
+anchor_top = 0.5
+anchor_right = 0.241
+anchor_bottom = 0.5
+offset_left = -227.72
+offset_top = -209.0
+offset_right = 228.28
+offset_bottom = 216.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="StartButton" type="Button" parent="UserInterface/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_bqqt6")
+text = "开始游戏"
+script = ExtResource("3_wu84c")
+
+[node name="AboutButton" type="Button" parent="UserInterface/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_bqqt6")
+text = "关于"
+
+[node name="ExitButton" type="Button" parent="UserInterface/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_bqqt6")
+text = "退出游戏"
+script = ExtResource("4_wu84c")
+
+[node name="Title" type="Label" parent="UserInterface"]
+anchors_preset = -1
+anchor_left = 0.727
+anchor_top = 0.5
+anchor_right = 0.727
+anchor_bottom = 0.5
+offset_left = -215.84
+offset_top = -172.0
+offset_right = 216.16
+offset_bottom = 181.0
+grow_horizontal = 0
+grow_vertical = 2
+theme = ExtResource("3_bqqt6")
+text = "留言
+未送达"
+horizontal_alignment = 1
+
+[connection signal="pressed" from="UserInterface/VBoxContainer/StartButton" to="UserInterface/VBoxContainer/StartButton" method="_on_pressed"]
+[connection signal="pressed" from="UserInterface/VBoxContainer/ExitButton" to="UserInterface/VBoxContainer/ExitButton" method="_on_pressed"]

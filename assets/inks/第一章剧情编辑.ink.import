@@ -1,0 +1,16 @@
+[remap]
+
+importer="ink"
+type="Resource"
+uid="uid://di6wskwm6t2db"
+path="res://.godot/imported/第一章剧情编辑.ink-8f7d7299968f231916bcf589560f273d.res"
+
+[deps]
+
+source_file="res://assets/inks/第一章剧情编辑.ink"
+dest_files=["res://.godot/imported/第一章剧情编辑.ink-8f7d7299968f231916bcf589560f273d.res"]
+
+[params]
+
+is_main_file=true
+compress=true
