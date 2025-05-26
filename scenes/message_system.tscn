@@ -1,0 +1,51 @@
+[gd_scene load_steps=4 format=3 uid="uid://byh0y4qcjjj3m"]
+
+[ext_resource type="FontFile" uid="uid://b5ct6hn85q7wr" path="res://fonts/苹方黑体-中粗-简.ttf" id="1_6ytd1"]
+[ext_resource type="Script" uid="uid://ds4lbvhkuqfed" path="res://scripts/message_system.gd" id="1_k25v6"]
+[ext_resource type="Texture2D" uid="uid://bg6e4b0ogca4o" path="res://figures/Back-Button.png" id="3_k25v6"]
+
+[node name="MessageSystem" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_k25v6")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+custom_minimum_size = Vector2(890, 1440)
+layout_mode = 0
+color = Color(0.282353, 0.662745, 0.721569, 0.67451)
+
+[node name="Title" type="Label" parent="."]
+layout_mode = 0
+offset_left = 337.0
+offset_top = 8.0
+offset_right = 517.0
+offset_bottom = 93.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_6ytd1")
+theme_override_font_sizes/font_size = 60
+text = "留言板"
+
+[node name="BackButton" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 25.0
+offset_right = 152.0
+offset_bottom = 81.0
+texture_normal = ExtResource("3_k25v6")
+texture_pressed = ExtResource("3_k25v6")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+layout_mode = 0
+offset_top = 88.0
+offset_right = 888.0
+offset_bottom = 1440.0
+horizontal_scroll_mode = 0
+
+[node name="MessageList" type="VBoxContainer" parent="ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 10
