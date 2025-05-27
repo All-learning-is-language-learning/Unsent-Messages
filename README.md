@@ -23,13 +23,15 @@
 每对话动画渲染完成后展示下一句按钮，段落最后一句渲染完成后展示选项。
 
 标签切换背景/角色用法：
-```
+```ink
 # background:a      —— 更换为 a 背景
 # character:knight  —— 添加/显示 knight
 # character:!knight —— 隐藏/移除 knight
 # character:!all    —— 清除所有角色
 # shake             —— 画面震动效果
 # memory:a,b,c,.... —— 闪回 a, b, c 背景
+# state:1           —— 修改留言系统状态为 1
+# message:open/close—— 打开/关闭留言系统
 ```
 
 在 `game` 场景的 `bg_texture` 和 `character_textures` 字典中添加材质，通过 `game.gd` 中的 `fade_time` 字段控制淡入淡出时间。
@@ -46,7 +48,7 @@
 
 - [ ] ~~文本速度控制~~
 
-- [ ] 章节目录
+- [ ] ~~章节目录~~
 
 - [x] 优化 UI 显示
 

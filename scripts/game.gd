@@ -45,6 +45,7 @@ var bg_current_name : String = "dormitory";
 @onready var ink_story = dialogue.ink_story
 @onready var camera = $Camera2D
 @onready var memory_player = $MemoryPlayer
+@onready var message_system = $MessageSystem
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -74,6 +75,13 @@ func _on_dialogue_tag_parsed(tag: Array) -> void:
 			camera.start_shake(2, 10)
 		"memory":
 			_on_memory_tag(tag[1])
+		"state":
+			message_system.set_game_progress(String.num(tag[1]))
+		"message":
+			if(tag[1] == "open"):
+				_open_message_system()
+			elif(tag[1] == "close"):
+				_close_message_system()
 
 # 当收到 memory 标签时调用
 func _on_memory_tag(value: String) -> void:
@@ -261,3 +269,29 @@ func load_from_file(path: String) -> void:
 		child.queue_free()
 	
 	dialogue._show_next_line(ink_story.GetCurrentText())
+
+func _open_message_system():
+	if(!message_system.visible):
+		_switch_message_system()
+		
+func _close_message_system():
+	if(message_system.visible):
+		_switch_message_system()
+	
+func _switch_message_system():
+	if(message_system.visible):
+		message_system.visible = false
+		for i in dialogue.get_children():
+			i.position.x -= 450
+			i.position.y += 550
+		characters_container.position.x -= 450
+		characters_container.scale.x = 1
+		characters_container.scale.y = 1
+	else :
+		message_system.visible = true
+		for i in dialogue.get_children():
+			i.position.x += 450
+			i.position.y -= 550
+		characters_container.position.x += 450
+		characters_container.scale.x = 0.6
+		characters_container.scale.y = 0.6

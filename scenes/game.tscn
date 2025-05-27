@@ -52,6 +52,7 @@ visible = false
 offset_top = 180.0
 offset_right = 1920.0
 offset_bottom = 1080.0
+pivot_offset = Vector2(960, 900)
 size_flags_horizontal = 3
 size_flags_vertical = 12
 mouse_filter = 2
@@ -72,8 +73,9 @@ ink_story = ExtResource("5_gee14")
 [node name="Buttons" type="HBoxContainer" parent="UserInterface"]
 offset_left = 1433.0
 offset_top = 993.0
-offset_right = 1917.0
+offset_right = 1845.0
 offset_bottom = 1081.0
+alignment = 2
 
 [node name="Save" type="Button" parent="UserInterface/Buttons"]
 layout_mode = 2

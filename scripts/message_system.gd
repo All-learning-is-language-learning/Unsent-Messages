@@ -5,7 +5,7 @@ var messages = []
 var visible_messages = []
 
 # Game progress tracking
-var game_progress = 32  # This will determine which messages are visible
+var game_progress = 5  # This will determine which messages are visible
 
 # References to UI elements
 @onready var message_list = $ScrollContainer/MessageList
@@ -19,7 +19,7 @@ func _ready():
 	back_button.pressed.connect(_on_back_button_pressed)
 	
 	# Configure VBoxContainer spacing
-	message_list.add_theme_constant_override("separation", 240)  # Add 10px spacing between items
+	#message_list.add_theme_constant_override("separation", 320)  # Add 10px spacing between items
 	
 	# Load messages from JSON
 	load_messages()
@@ -41,7 +41,7 @@ func _input(event):
 
 func load_messages():
 	# Load message data from JSON file
-	var file = FileAccess.open("res://data/messages.json", FileAccess.READ)
+	var file = FileAccess.open("res://assets/data/messages.json", FileAccess.READ)
 	if file:
 		var json_string = file.get_as_text()
 		file.close()
@@ -66,7 +66,8 @@ func update_visible_messages():
 		if is_message_visible(message):
 			# Add time if not present in the JSON
 			if not message.has("time"):
-				message["time"] = "今天 14:30"  # Default time
+				#message["time"] = "今天 14:30"  # Default time
+				message["time"] = ""  # 不显示
 			
 			visible_messages.append(message)
 	
@@ -112,8 +113,7 @@ func populate_message_list():
 	print("Populated message list with ", visible_messages.size(), " messages")
 
 func _on_back_button_pressed():
-	# Return to main game scene
-	get_tree().change_scene_to_file("res://main_game.tscn")  # Change to your main scene path
+	visible = !visible
 
 # Public function to set the game progress and update visible messages
 func set_game_progress(progress):

@@ -10,5 +10,5 @@ func _on_LoadButton_pressed():
 	game.load_from_file("user://save1.json")
 
 func _on_MessageButton_pressed():
-	message.visible = !message.visible
+	game._switch_message_system()
 	
