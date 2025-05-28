@@ -1,15 +1,15 @@
 [gd_scene load_steps=6 format=3 uid="uid://bxgnr5owcg1da"]
 
-[ext_resource type="FontFile" uid="uid://bkv24wq8ag641" path="res://fonts/cangejundongxingshu.ttf" id="1_4n7pn"]
-[ext_resource type="Script" uid="uid://boykdtgbexf2n" path="res://scripts/message_item.gd" id="1_kkv0p"]
-[ext_resource type="FontFile" uid="uid://b5ct6hn85q7wr" path="res://fonts/苹方黑体-中粗-简.ttf" id="2_kkv0p"]
-[ext_resource type="FontFile" uid="uid://coo4waefhlgqx" path="res://fonts/仓耳丝摇行楷.ttf" id="3_obwn0"]
+[ext_resource type="FontFile" uid="uid://bkv24wq8ag641" path="res://assets/fonts/cangejundongxingshu.ttf" id="1_4n7pn"]
+[ext_resource type="Script" path="res://scripts/message_item.gd" id="1_kkv0p"]
+[ext_resource type="FontFile" uid="uid://b5ct6hn85q7wr" path="res://assets/fonts/苹方黑体-中粗-简.ttf" id="2_kkv0p"]
+[ext_resource type="FontFile" uid="uid://coo4waefhlgqx" path="res://assets/fonts/仓耳丝摇行楷.ttf" id="3_obwn0"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_puv0h"]
-content_margin_left = 3.0
-content_margin_top = 3.0
-content_margin_right = 3.0
-content_margin_bottom = 3.0
+content_margin_left = 20.0
+content_margin_top = 20.0
+content_margin_right = 20.0
+content_margin_bottom = 20.0
 bg_color = Color(0.85476, 0.936648, 0.947749, 0.819608)
 corner_radius_top_left = 8
 corner_radius_top_right = 8
@@ -20,8 +20,10 @@ shadow_size = 1
 [node name="MessageItem" type="Control"]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_right = 841.0
+offset_bottom = 236.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
 script = ExtResource("1_kkv0p")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
@@ -38,12 +40,14 @@ layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_puv0h")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer"]
-custom_minimum_size = Vector2(850, 120)
+custom_minimum_size = Vector2(800, 80)
+
 layout_mode = 2
 theme_override_constants/separation = 0
 
 [node name="Header" type="HBoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer"]
 layout_mode = 2
+size_flags_vertical = 3
 
 [node name="AuthorLabel" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer/Header"]
 custom_minimum_size = Vector2(0, 60)
@@ -55,6 +59,7 @@ theme_override_font_sizes/font_size = 40
 
 [node name="TimeLabel" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer/Header"]
 layout_mode = 2
+size_flags_horizontal = 3
 theme_override_colors/font_color = Color(0.316167, 0.316167, 0.316167, 1)
 theme_override_fonts/font = ExtResource("2_kkv0p")
 theme_override_font_sizes/font_size = 22
@@ -62,7 +67,7 @@ horizontal_alignment = 2
 vertical_alignment = 1
 
 [node name="ContentLabel" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 120)
+custom_minimum_size = Vector2(0, 80)
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/font_color = Color(0, 0, 0, 1)
