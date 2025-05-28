@@ -24,21 +24,28 @@ offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("1_kkv0p")
 
-[node name="PanelContainer" type="PanelContainer" parent="."]
-layout_mode = 0
-offset_right = 896.0
-offset_bottom = 220.0
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+offset_left = 3.0
+offset_top = 3.0
+offset_right = 893.0
+offset_bottom = 443.0
+theme_override_constants/margin_top = 200
+theme_override_constants/margin_bottom = 2000
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer"]
+layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_puv0h")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
-custom_minimum_size = Vector2(890, 120)
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer"]
+custom_minimum_size = Vector2(850, 120)
 layout_mode = 2
-theme_override_constants/separation = 15
+theme_override_constants/separation = 0
 
-[node name="Header" type="HBoxContainer" parent="PanelContainer/VBoxContainer"]
+[node name="Header" type="HBoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="AuthorLabel" type="Label" parent="PanelContainer/VBoxContainer/Header"]
+[node name="AuthorLabel" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer/Header"]
 custom_minimum_size = Vector2(0, 60)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -46,7 +53,7 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("1_4n7pn")
 theme_override_font_sizes/font_size = 40
 
-[node name="TimeLabel" type="Label" parent="PanelContainer/VBoxContainer/Header"]
+[node name="TimeLabel" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer/Header"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.316167, 0.316167, 0.316167, 1)
 theme_override_fonts/font = ExtResource("2_kkv0p")
@@ -54,7 +61,7 @@ theme_override_font_sizes/font_size = 22
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="ContentLabel" type="Label" parent="PanelContainer/VBoxContainer"]
+[node name="ContentLabel" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 120)
 layout_mode = 2
 size_flags_vertical = 3
