@@ -1,59 +1,41 @@
 extends Control
 
-# Store the data
-var author_text = ""
-var content_text = ""
-var time_text = ""
+# 根节点脚本：动态根据内容测算自身高度，并在父容器中正确排版
 
-# Flag to track if data has been set
-var data_set = false
-
+# --------------------------------------------------
+# _ready() 初始化布局相关的 Size Flags
+# --------------------------------------------------
 func _ready():
-	# Make sure this control expands properly
+	# 水平方向：展开并填充父容器宽度
 	size_flags_horizontal = SIZE_EXPAND_FILL
-	
-	# Call _process once to update the UI
-	_process(0)
+	# 垂直方向：填充，但不均分（由 custom_minimum_size.y 决定高度）
+	size_flags_vertical   = SIZE_FILL
 
-func _process(delta):
-	# This will run every frame until the labels are properly set
-	if data_set:
-		# Get references to the labels each frame until successful
-		var author_label = find_child("AuthorLabel", true, false)
-		var content_label = find_child("ContentLabel", true, false)
-		var time_label = find_child("TimeLabel", true, false)
-		
-		# If we found the labels, set their text
-		if author_label and content_label and time_label:
-			author_label.text = author_text
-			content_label.text = content_text
-			time_label.text = time_text
-			
-			# Log success
-			print("Successfully set text for message: ", author_text)
-			
-			# Stop processing once labels are set
-			set_process(false)
+# --------------------------------------------------
+# set_data(author, content, time)
+# 1. 设置文本内容到各个 Label
+# 2. 等待一帧布局完成
+# 3. 测算 PanelContainer 的最小高度
+# 4. 加上内边距后写入 custom_minimum_size.y
+# 5. 通知父容器 queue_sort() 重新排版
+# --------------------------------------------------
+func set_data(author: String, content: String, time: String) -> void:
+	# 1) 将传入的数据写入到对应的 Label
+	var header        = $PanelContainer/VBoxContainer/Header
+	var author_label  = $PanelContainer/VBoxContainer/Header/AuthorLabel
+	var time_label    = $PanelContainer/VBoxContainer/Header/TimeLabel
+	var content_label = $PanelContainer/VBoxContainer/ContentLabel
+	var panel         = $PanelContainer
 
-func set_data(author: String, content: String, time: String):
-	# Store the data
-	author_text = author
-	content_text = content
-	time_text = time + " "
-	data_set = true
-	
-	print("Data set: Author=", author, ", Time=", time)
-	
-	# Try to immediately set the text
-	var author_label = find_child("AuthorLabel", true, false)
-	var content_label = find_child("ContentLabel", true, false)
-	var time_label = find_child("TimeLabel", true, false)
-	
-	if author_label and content_label and time_label:
-		author_label.text = author_text
-		content_label.text = content_text
-		time_label.text = time_text
-		print("Immediately set text for labels")
-		set_process(false)  # No need to process anymore
-	else:
-		print("Labels not found yet, will try again in _process")
+	author_label.text  = author
+	content_label.text = content
+	time_label.text    = time  # 传入时可带空格或自行拼接
+	self.text = "\n" + "\n" + content + "\n"
+
+	# 2) 等待一帧，让 Godot 完成所有子控件的布局和尺寸计算
+	await get_tree().process_frame
+
+	# 5) 通知父 VBoxContainer 立即刷新布局
+	var parent_container = get_parent()
+	if parent_container:
+		parent_container.queue_sort()

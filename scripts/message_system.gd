@@ -19,7 +19,7 @@ func _ready():
 	back_button.pressed.connect(_on_back_button_pressed)
 	
 	# Configure VBoxContainer spacing
-	message_list.add_theme_constant_override("separation", 320)  # Add 10px spacing between items
+	#message_list.add_theme_constant_override("separation", 320)  # Add 10px spacing between items
 
 	
 	# Load messages from JSON
