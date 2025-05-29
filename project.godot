@@ -40,7 +40,3 @@ project/assembly_name="Unsent Messages"
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/GodotInk/plugin.cfg")
-
-[gui]
-
-theme/custom_font="uid://bemp1isvwwkjy"
