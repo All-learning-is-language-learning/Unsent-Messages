@@ -1,35 +1,65 @@
 extends Node2D
 
 var BG_TEXTURES = {
-	# 占位
 	"dormitory" : preload("res://assets/pictures/backgrounds/dormitory.png"),
 	"club classroom" : preload("res://assets/pictures/backgrounds/club_classroom.png"),
 	"library" : preload("res://assets/pictures/backgrounds/library_1.png"),
 	"library2" : preload("res://assets/pictures/backgrounds/library_2.png"),
 	"library warehouse" : preload("res://assets/pictures/backgrounds/library_warehouse.png"),
-	#"classroom1" : preload(),
+	"classroom1" : preload("res://assets/pictures/backgrounds/classroom_1.png"),
 	"classroom2" : preload("res://assets/pictures/backgrounds/classroom_2.png"),
 	"office" : preload("res://assets/pictures/backgrounds/office.png"),
 	"piano room" : preload("res://assets/pictures/backgrounds/piano_room.png"),
 	"balcony1" : preload("res://assets/pictures/backgrounds/balcony_1.png"),
 	"balcony2" : preload("res://assets/pictures/backgrounds/balcony_2.png"),
+	"balcony bw" : preload("res://assets/pictures/backgrounds/balcony_black_and_white.png"),
 	"lockers" : preload("res://assets/pictures/backgrounds/lockers_1.png"),
 	"lockers2" : preload("res://assets/pictures/backgrounds/lockers_2.png"),
 	"basement" : preload("res://assets/pictures/backgrounds/basement.png"),
 	"bed" : preload("res://assets/pictures/backgrounds/bed.png"),
 	"biological laboratory" : preload("res://assets/pictures/backgrounds/biological_laboratory.png"),
 	"biological laboratory2" : preload("res://assets/pictures/backgrounds/biological_laboratory_2.png"),
-	"bench" : preload("res://assets/pictures/backgrounds/bench.png")
-	
+	"bench" : preload("res://assets/pictures/backgrounds/bench.png"),
+	"Asheng" : preload("res://assets/pictures/backgrounds/ASheng.png"),
+	"lianqin" : preload("res://assets/pictures/backgrounds/practice_piano.png"),
+	"white smile" : preload("res://assets/pictures/backgrounds/white_smile.png"),
+	"blue book" : preload("res://assets/pictures/backgrounds/blue_book.png"),
+	"yunxi letter" : preload("res://assets/pictures/backgrounds/letter.png"),
+	"hand bandage" : preload("res://assets/pictures/backgrounds/vc.png"),
+	"same fingerprint" : preload("res://assets/pictures/backgrounds/fingerprint.png"),
+	"fire" : preload("res://assets/pictures/backgrounds/fire.png"),
+	"hurt neck" : preload("res://assets/pictures/backgrounds/hurt_neck.png"),
+	"jiabao1" : preload("res://assets/pictures/backgrounds/violence_1.png"),
+	"jiabao2" : preload("res://assets/pictures/backgrounds/violence_2.png"),
+	"jiabao3" : preload("res://assets/pictures/backgrounds/violence_3.png"),
+	"black" : preload("res://assets/pictures/backgrounds/black.png"),
+	"xiangkuang" : preload("res://assets/pictures/backgrounds/album.png"),
+	"baling" : preload("res://assets/pictures/backgrounds/baling.png"),
+	"yaogao" : preload("res://assets/pictures/backgrounds/medicine.png"),
+	"san" : preload("res://assets/pictures/backgrounds/umbrella.png"),
+	"weixiexin" : preload("res://assets/pictures/backgrounds/weixiexin.png"),
+	"stars" : preload("res://assets/pictures/backgrounds/stars.png"),
+	"uniform" : preload("res://assets/pictures/backgrounds/uniform.png"),
+	"computer1" : preload("res://assets/pictures/backgrounds/computer_1.png"),
+	"computer2" : preload("res://assets/pictures/backgrounds/computer_2.png"),
+	"pic" : preload("res://assets/pictures/backgrounds/pic.png"),
+	"mirror" : preload("res://assets/pictures/backgrounds/mirror.png")
 }
 	
 var CHARACTER_TEXTURES = {
 	"LinYe" : preload("res://assets/pictures/characters/LinYe.png"),
+	"LinYe_shock" : preload("res://assets/pictures/characters/LinYeShock.png"),
+	"LinYe_relieve" : preload("res://assets/pictures/characters/LinYeRelieve.png"),
+	"LinYe_cry" : preload("res://assets/pictures/characters/LinYeCry.png"),
+	"LinYe_sad" : preload("res://assets/pictures/characters/LinYeSad.png"),
 	"ChenHao" : preload("res://assets/pictures/characters/ChenHao.png"),
 	"XiaoYu" : preload("res://assets/pictures/characters/XiaoYu.png"),
+	"XiaoYu_awkward" : preload("res://assets/pictures/characters/LinYeShock.png"),
+	"XiaoYu_hesitant" : preload("res://assets/pictures/characters/LinYeRelieve.png"),
 	"ZhangYi" : preload("res://assets/pictures/characters/ZhangYi.png"),
 	"professor" : preload("res://assets/pictures/characters/professor.png"),
-	"ChenMo" : preload("res://assets/pictures/characters/ChenMo.png")
+	"ChenMo" : preload("res://assets/pictures/characters/ChenMo.png"),
+	"ASheng" : preload("res://assets/pictures/characters/ASheng.png")
 }
 
 # 存放已经实例化的角色节点，key = 角色名
@@ -44,7 +74,7 @@ var bg_current_name : String = "dormitory";
 @onready var characters_container = $Characters
 @onready var ink_story = dialogue.ink_story
 @onready var camera = $Camera2D
-@onready var memory_player = $MemoryPlayer
+@onready var memory_player = $UserInterface/MemoryPlayer
 @onready var message_system = $MessageSystem
 
 # Called when the node enters the scene tree for the first time.
@@ -69,19 +99,29 @@ func _on_dialogue_tag_parsed(tag: Array) -> void:
 					_clear_all_characters()
 				else:
 					_hide_character(name)
+			elif tag.size() == 3:
+				_change_expression(tag[1], tag[2])
 			else:
 				_show_character(tag[1])
+			
 		"shake":
 			camera.start_shake(2, 10)
 		"memory":
 			_on_memory_tag(tag[1])
 		"state":
-			message_system.set_game_progress(String.num(tag[1]))
+			message_system.set_game_progress(tag[1].to_int())
 		"message":
 			if(tag[1] == "open"):
 				_open_message_system()
 			elif(tag[1] == "close"):
 				_close_message_system()
+
+func _change_expression(name: String, expression: String):
+	if !character_nodes.has(name):
+		return
+	var character = character_nodes.get(name)
+	var tex = CHARACTER_TEXTURES.get(expression, null)
+	character.texture = tex
 
 # 当收到 memory 标签时调用
 func _on_memory_tag(value: String) -> void:
@@ -102,7 +142,7 @@ func _on_memory_tag(value: String) -> void:
 	# 闪回结束后，继续对话流程（如果需要）
 	#dialogue._continue_paragraph()
 
-var bg_fade_time = 1.0
+var bg_fade_time = 2.0
 var char_fade_time = 1.0
 
 func _change_background_to(name: String) -> void:
@@ -212,7 +252,8 @@ func save_to_file(path: String) -> void:
 	var save_dict = {
 		"ink": ink_state,
 		"background": bg_key,
-		"characters": chars
+		"characters": chars,
+		"state" : message_system.game_progress
 	}
 
 	# 5) 转为 JSON 并写文件
@@ -263,10 +304,17 @@ func load_from_file(path: String) -> void:
 	# 6) 恢复角色
 	for name in save_dict.get("characters", []):
 		_show_character(name)  # 使用你原来的带动画或 instant 版
-		
+	
+	message_system.game_progress = save_dict.get("state")
+	print("loaded game progress", message_system.game_progress)
+	message_system.update_visible_messages()
+	message_system.populate_message_list()
+	
 	# 清理旧选项
 	for child in dialogue.options_container.get_children():
 		child.queue_free()
+	
+	dialogue.next_button.visible = false
 	
 	dialogue._show_next_line(ink_story.GetCurrentText())
 

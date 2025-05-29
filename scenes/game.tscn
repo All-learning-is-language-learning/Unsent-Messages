@@ -7,10 +7,10 @@
 [ext_resource type="Script" uid="uid://c238j0k4n78kl" path="res://scripts/user_interface.gd" id="3_gee14"]
 [ext_resource type="PackedScene" uid="uid://bmrox1bp4rgfh" path="res://scenes/message_system.tscn" id="3_vtaks"]
 [ext_resource type="PackedScene" uid="uid://cese24e664rhm" path="res://scenes/memory_player.tscn" id="5_dinhu"]
-[ext_resource type="Resource" uid="uid://cvnfbsxvu2ym0" path="res://assets/inks/完整剧情分支.ink" id="5_gee14"]
 [ext_resource type="Texture2D" uid="uid://bodcruv6rqx57" path="res://assets/pictures/ui/save.png" id="5_iywne"]
 [ext_resource type="Theme" uid="uid://cq6g3leg2c6va" path="res://themes/dialogue.tres" id="5_u5sy4"]
 [ext_resource type="Texture2D" uid="uid://cdd60vm64m3nw" path="res://assets/pictures/ui/import.png" id="6_p57ef"]
+[ext_resource type="Resource" uid="uid://c8drqxt0by5in" path="res://assets/inks/完整剧情分支改.ink" id="8_dinhu"]
 [ext_resource type="Texture2D" uid="uid://bwhikqmdpcq1t" path="res://assets/pictures/ui/message.png" id="9_0tnpc"]
 
 [node name="Game" type="Node2D"]
@@ -59,16 +59,19 @@ mouse_filter = 2
 alignment = 1
 metadata/separation = 20
 
-[node name="MemoryPlayer" parent="." instance=ExtResource("5_dinhu")]
-visible = false
-
 [node name="UserInterface" type="CanvasLayer" parent="."]
 script = ExtResource("3_gee14")
 
 [node name="Dialogue" parent="UserInterface" instance=ExtResource("2_yqjtg")]
 offset_left = 0.0
 offset_right = 0.0
-ink_story = ExtResource("5_gee14")
+ink_story = ExtResource("8_dinhu")
+
+[node name="MemoryPlayer" parent="UserInterface" instance=ExtResource("5_dinhu")]
+visible = false
+offset_right = 1920.0
+offset_bottom = 1080.0
+mouse_filter = 0
 
 [node name="Buttons" type="HBoxContainer" parent="UserInterface"]
 offset_left = 1433.0

@@ -75,13 +75,16 @@ func _on_line_typed():
 		# 还没到最后一句，显示“下一句”
 		next_button.visible = true
 	else:
+		next_button.visible = false
 		# 最后一行打完，直接展示选项
 		_show_choices()
 
 # 根据句子长度计算动画时间
 func calc_display_time(len: int) -> float:
-	var T_min = 0.8
-	var T_max = 2.0
+	#var T_min = 0.8
+	#var T_max = 2.0
+	var T_min = 0.01
+	var T_max = 0.02
 	var L_max = 200
 	# 对数映射
 	var norm = 1.0 - (log(len + 1) / log(L_max + 1))

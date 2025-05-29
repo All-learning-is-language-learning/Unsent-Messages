@@ -28,6 +28,7 @@ offset_right = 228.28
 offset_bottom = 216.0
 grow_horizontal = 2
 grow_vertical = 2
+alignment = 1
 
 [node name="StartButton" type="Button" parent="UserInterface/VBoxContainer"]
 layout_mode = 2
@@ -36,6 +37,7 @@ text = "开始游戏"
 script = ExtResource("3_wu84c")
 
 [node name="AboutButton" type="Button" parent="UserInterface/VBoxContainer"]
+visible = false
 layout_mode = 2
 theme = ExtResource("3_bqqt6")
 text = "关于"

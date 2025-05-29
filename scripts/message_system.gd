@@ -5,7 +5,7 @@ var messages = []
 var visible_messages = []
 
 # Game progress tracking
-var game_progress = 5  # This will determine which messages are visible
+var game_progress = -1  # This will determine which messages are visible
 
 # References to UI elements
 @onready var message_list = $ScrollContainer/MessageList
