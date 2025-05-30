@@ -81,10 +81,9 @@ func _on_line_typed():
 
 # 根据句子长度计算动画时间
 func calc_display_time(len: int) -> float:
-	#var T_min = 0.8
-	#var T_max = 2.0
-	var T_min = 0.01
-	var T_max = 0.02
+	var T_min = 0.8
+	var T_max = 2.0
+
 	var L_max = 200
 	# 对数映射
 	var norm = 1.0 - (log(len + 1) / log(L_max + 1))

@@ -20,7 +20,6 @@ var BG_TEXTURES = {
 	"biological laboratory" : preload("res://assets/pictures/backgrounds/biological_laboratory.png"),
 	"biological laboratory2" : preload("res://assets/pictures/backgrounds/biological_laboratory_2.png"),
 	"bench" : preload("res://assets/pictures/backgrounds/bench.png"),
-	"Asheng" : preload("res://assets/pictures/backgrounds/ASheng.png"),
 	"lianqin" : preload("res://assets/pictures/backgrounds/practice_piano.png"),
 	"white smile" : preload("res://assets/pictures/backgrounds/white_smile.png"),
 	"blue book" : preload("res://assets/pictures/backgrounds/blue_book.png"),
@@ -43,7 +42,15 @@ var BG_TEXTURES = {
 	"computer1" : preload("res://assets/pictures/backgrounds/computer_1.png"),
 	"computer2" : preload("res://assets/pictures/backgrounds/computer_2.png"),
 	"pic" : preload("res://assets/pictures/backgrounds/pic.png"),
-	"mirror" : preload("res://assets/pictures/backgrounds/mirror.png")
+	"mirror" : preload("res://assets/pictures/backgrounds/mirror.png"),
+	"note" : preload("res://assets/pictures/backgrounds/note.png"),
+	"blood_star" : preload("res://assets/pictures/backgrounds/blood_star.png"),
+	"scratch" : preload("res://assets/pictures/backgrounds/scratch.png"),
+	"sad_medicine" : preload("res://assets/pictures/backgrounds/sad_medicine.png"),
+	"perfume" : preload("res://assets/pictures/backgrounds/perfume.png"),
+	"engraving" : preload("res://assets/pictures/backgrounds/engraving.png"),
+	"live" : preload("res://assets/pictures/backgrounds/live.png")
+	
 }
 	
 var CHARACTER_TEXTURES = {

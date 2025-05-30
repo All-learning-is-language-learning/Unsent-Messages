@@ -13,7 +13,9 @@ config_version=5
 config/name="Unsent Messages"
 run/main_scene="uid://cahoj8dy5yml5"
 config/features=PackedStringArray("4.4", "C#", "Forward Plus")
-config/icon="res://icon.svg"
+config/icon="uid://6cf2w00pnml0"
+config/macos_native_icon="uid://6cf2w00pnml0"
+config/windows_native_icon="res://assets/pictures/icon/unsentmessage.ico"
 
 [dialogic]
 
