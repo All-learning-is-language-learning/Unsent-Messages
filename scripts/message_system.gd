@@ -79,10 +79,20 @@ func update_visible_messages():
 
 func is_message_visible(message):
 	# Determine if a message is visible based on game progress
-	# Messages are visible if their id is less than or equal to the current game progress
-	if message.id <= game_progress:
-		return true
-	
+	if game_progress == 4:
+		if message.id in [1, 2, 3, 4]:
+			return true
+		return false
+		
+	if game_progress == 5:
+		if message.id in [1, 2, 3, 5]:
+			return true
+		return false
+		
+	# 随机展示
+	if message.id >= 5 and message.id <= 30:
+		# 以25%概率展示，可以根据需要调整概率
+		return randi() % 4 == 0  # 25%概率
 	return false
 
 func populate_message_list():
